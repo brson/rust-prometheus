@@ -20,9 +20,9 @@ use std::sync::Arc;
 
 use spin::RwLock;
 
-use errors::{Error, Result};
-use metrics::Collector;
-use proto;
+use crate::errors::{Error, Result};
+use crate::metrics::Collector;
+use crate::proto;
 
 struct RegistryCore {
     pub collectors_by_id: HashMap<u64, Box<Collector>>,
@@ -294,10 +294,10 @@ pub fn gather() -> Vec<proto::MetricFamily> {
 mod tests {
 
     use super::*;
-    use counter::{Counter, CounterVec};
-    use desc::Desc;
-    use metrics::{Collector, Opts};
-    use proto;
+    use crate::counter::{Counter, CounterVec};
+    use crate::desc::Desc;
+    use crate::metrics::{Collector, Opts};
+    use crate::proto;
     use std::collections::HashMap;
     use std::thread;
 
